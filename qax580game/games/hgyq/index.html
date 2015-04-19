@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>画个圆</title>
+<link href="img/gamelebi.css" rel="stylesheet" type="text/css">
+<script src="img/gamelebi.js"></script>
+<meta name="viewport" content="user-scalable=no width=device-width">
+<link rel="stylesheet" href="hgy/circle/css/style.css">
+<STYLE TYPE="text/css" MEDIA=screen>
+    #desktop-ad {
+        display: block;
+        margin-left: -160px;
+        width: 320px;
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        z-Index: 1000;
+        text-align: center;
+    }
+    </STYLE>
+<script src="hgy/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+        function HideContent(d) {
+            $('#' + d).hide();
+        }
+        function ShowContent(d) {
+            $('#' + d).show(1000);
+        }
+    </script>
+<script type="text/javascript" src="hgy/circle/js/cookies.js"></script>
+<script src="hgy/ajax/libs/paper.js/0.9.18/paper-full.min.js"></script>
+<script type="text/paperscript" canvas="canvas" src="hgy/circle/js/circle_origin.js"></script>
+</head>
+<body>
+<div id="spns"></div>
+<div id="wx_logo" style="margin:0 auto;display:none;"> <img src="hgy/circle/logo/circle.png" /> </div>
+<canvas id="canvas" resize stats hidpi="on"></canvas>
+<div id="inputpage">
+  <div id="middle">
+    <div id="name_form">
+      <p>载入中，请稍等。。。</p>
+    </div>
+  </div>
+</div>
+<script>var loading = true;</script>
+<script>
+        var gamelebi = new GameLeBi("hgy","yums");
+        gamelebi.shareData.title = "画个圆-庆安县580游戏游戏";
+        gamelebi.shareData.content = "画个圆,看看你绘画的天赋-庆安县580游戏游戏";
+		function goHome(){
+			window.location=gamelebi.homeurl;
+		}
+		function clickMore(){
+			 if((window.location+"").indexOf("f=zf",1)>0){
+			 	window.location = gamelebi.gzurl;
+			  }
+			  else{
+			 	goHome();
+			  }
+		}
+		function dp_share(){
+			gamelebi.share();
+		}
+		function dp_Ranking(){
+			window.location=gamelebi.homeurl;
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		function dp_submitScore(score,stitle){
+			if(score>0){
+				gamelebi.score =parseInt(score*100);
+				gamelebi.scoreName = score+"%圆";				
+				gamelebi.shareData.title =stitle;
+				gamelebi.utils.shareConfirm("你画了"+score+"%圆。快通知一下小伙伴吧！", dp_share); 
+			}
+		}
+</script>
+<script type="text/javascript">gamelebi.utils.guanggao();</script>
+<div style="text-align: center; display: block; font-size: 0px; width: 100%; height: 60px; opacity: 0.9; position: fixed; bottom: 0px; background-color: rgb(0, 0, 0); z-index: 2147483646;" id="cproIframe1Wrap" baiduxuanting="baiduCproXuantingRoof"><div style="width:100%;height:60px;position:relative;margin:0 auto;"><iframe width="100%" height="60px" frameborder="0" align="center,center" style="margin-left:px" allowtransparency="true" scrolling="no" marginheight="0" marginwidth="0" _src="../../ad.html"" id="cproIframe1" src="../../ad.html"></iframe></div></div>
+</body>
+</html>

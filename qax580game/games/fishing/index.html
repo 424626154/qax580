@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>「小猫钓鱼」我已经到了出神入化的地步，无人能及！</title>
+<link href="http://m.xiaolebi.com/img/game.css" rel="stylesheet" type="text/css"/>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://m.xiaolebi.com/img/game.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no height=device-height" />
+<link type="text/css" href="style/m.css" rel="stylesheet" />
+<link type="text/css" href="style/common.css" rel="stylesheet" />
+<script type="text/javascript" src="script/zepto.min.js"></script>
+<script src="script/common.js"></script>
+<script>
+var gameid = "fishing";
+var shareDomains = ["dm15.com", "dm15.net"];
+var shareDomain = this.shareDomains[parseInt(Math.random() * this.shareDomains.length)];
+var _czc = _czc || [];
+</script>
+</head>
+<body class="body">
+<div id="gamediv"></div>
+<input id="bt-game-id" type="hidden" value="fishinglegend">
+<div id="spnx"></div>
+<div id="share" ontouchstart="document.getElementById('share').style.display='none';" onclick="document.getElementById('share').style.display='none';"> <img src="share.png" alt=""> </div>
+<script type="text/javascript" src="./script/plugin/lufylegend-1.9.1.min.js"></script>
+<script type="text/javascript" src="./script/Main.js"></script>
+<script type="text/javascript">
+		window.onerror = function(e) {
+			// alert(e);
+		}
+		btGame.onlyVScreen();
+	</script>
+    <script type="text/javascript">
+		window.shareData = {
+		        "imgUrl": "http://m.xiaolebi.com/"+ gameid +"/icon.png",
+		        "timeLineLink": "http://" + parseInt(Math.random()*100000) + '.' + gameid + '.' + shareDomain +'/'+ gameid +'/',
+		        "tTitle": "小猫钓鱼",
+		        "tContent": "还记得童年的小猫钓鱼么？一条鱼，两条鱼。。。一起来！"
+		};
+
+
+		function clickMore(){
+			  _czc.push(['_trackEvent', '点击', '更多游戏']);
+	     window.location = "http://mp.weixin.qq.com/s?__biz=MzA5MTQ2NjQ2MA==&mid=204163829&idx=1&sn=2722bee24d5645f27f95413a17c508c8#rd";
+		}
+		function dp_share(){
+			_czc.push(['_trackEvent', '点击', '分享游戏按钮']);
+		    document.getElementById("share").style.display = "block";
+		}
+
+		function showAd(){
+		}
+		function hideAd(){
+		}
+		document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+		    WeixinJSBridge.on('menu:share:appmessage', function(argv) {
+		        WeixinJSBridge.invoke('sendAppMessage', {
+		            "img_url": window.shareData.imgUrl,
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareCircle);
+		    });
+
+		    WeixinJSBridge.on('menu:share:timeline', function(argv) {
+		        WeixinJSBridge.invoke('shareTimeline', {
+		            "img_url": window.shareData.imgUrl,
+		            "img_width": "640",
+		            "img_height": "640",
+		            "link": window.shareData.timeLineLink,
+		            "desc": window.shareData.tContent,
+		            "title": window.shareData.tTitle
+		        }, onShareCircle);
+		    });
+		}, false);
+		</script>
+      <script type="text/javascript">
+			var myData = { gameid: "fishing" };
+			function dp_submitScore(score){
+				myData.score =parseInt(score);
+				myData.scoreName = "获得了"+score+"分";	
+				document.title="我在【小猫钓鱼】中得了" + score + "分，谁能超越我？"
+				window.shareData.tTitle = document.title;
+				if(score>0){
+				  if(window.confirm("你玩小猫钓鱼得了"+score+"分，快分享给小伙伴们吧！", dp_share)){
+                      this.dp_share();
+				  } 
+				}
+		    }
+			function onShareFriends(res) {
+				  _czc.push(['_trackEvent', '分享好友']);
+			}
+
+			function onShareCircle(res) {
+				 _czc.push(['_trackEvent', '分享朋友圈']);
+			}
+     </script>
+<div style="display:none">
+<script type="text/javascript">tongji();</script>
+</div>
+</body>
+</html>
