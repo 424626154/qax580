@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>庆安县580</title>
+    <link rel="shortcut icon" href="/statics/images/qax580/logo.jpg" />
+    <link href="{CSS_PATH}/bootstrap.min.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="{JS_PATH}/bootstrap.min.js"></script>
+    <style type="text/css">
+    body { padding-top: 50px; word-wrap: break-word; }
+    .search { background-color: #eee; padding: 20px 0 20px 0; margin-bottom: 20px; }
+    .search .container { max-width: 700px; }
+    .navbar { background-color: #428bcb; }
+    .navbar a { color: #fff; }
+    .navbar a:hover { color: #fff; }
+    .navbar .nav a:hover { color: #428bcb; }
+    .navbar-toggle span { background-color: #fff; }
+    #footer { clear: both; text-align: center; font-size: 12px; margin-bottom: 20px; }
+    #footer #topcity { margin-bottom: 20px; }
+    h1 { font-size: 24px; margin-bottom: 20px; }
+    h2 { font-size: 18px; }
+    .cities dl, .channels dl {  }
+    .cities dd, .channels dd { display: inline-block; }
+    .cities dt, .channels dt, .channels .channel_name { display: inline-block; background-color: #428bcb; color: #fff; font-weight: normal; border-radius: 20px; padding: 1px 10px 2px 10px; margin-right: 10px; }
+    .channels .channel_name { margin-bottom: 20px; }
+    #messages .sep { margin-bottom: 20px; }
+    #messages .d { font-size: 12px; color: #ccc; }
+    .breadcrumb { font-size: 12px; }
+    form .verify { width: 250px; }
+    form .error { margin-top: 5px; color: #f30; display: none; }
+    form .info  { margin-top: 5px; }
+  </style>
+  </head>
+  <body>
+             <div class="login lh24 blue"><span class="rt"><script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="500" height="24" frameborder="0" scrolling="no"></iframe>')</script></span></div>
+                  </div>
+              </div>
+      <div class="navbar navbar-fixed-top" role="navigation">
+            <div class="container">
+              <div class="navbar-header">
+            <a href="/qax580" class="navbar-brand">庆安县580</a>
+              </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              {if $_username}{L('hellow')} {get_nickname()},
+              <li><a href="{APP_PATH}index.php?m=member&siteid={$siteid}">{get_nickname()}</a></li>
+              <li><a href="{APP_PATH}index.php?m=member&c=index&a=logout&forward={urlencode($_GET['forward'])}&siteid={$siteid}">退出</a></li>
+              {else} 
+              <li><a href="{APP_PATH}index.php?m=member&c=index&a=register&siteid={$siteid}">注册</a></li>
+              <li><a href="{APP_PATH}index.php?m=member&c=index&a=login&forward={urlencode($_GET['forward'])}&siteid={$siteid}">登录</a></li>
+              {/if} 
+            </ul>
+          </div>
+            </div>
+        </div>
+
+        </div>
+        {loop subcat(0,0,0,$siteid) $r}
+        {php $num++}
+        <div class="box cat-area" {if $num%2!=0}style=" margin-right:10px"{/if}>
+            <a class="label label-default" href="{$r[url]}" >{$r[catname]}</a>
+             <div class="content">
+             {pc:content  action="lists" catid="$r[catid]" order="updatetime DESC" thumb="1" num="1" return="info"}
+             {loop $info $v}
+              <p>
+                <img src="{thumb($v[thumb],90,0)}" width="90" height="60"/>
+                    <strong><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],28)}</a></strong><br />{str_cut($v['description'],100)}
+                </p>
+              {/loop}
+              {/pc}                
+                <div class="bk15 hr"></div>
+                {pc:content action="lists" catid="$r[catid]" num="5" order="id DESC" return="info"}
+                    <ul class="list-group">
+                      {loop $info $v}
+                        <li class="list-group-item"><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],40)}</a></li>
+                      {/loop}
+                    </ul>
+                {/pc}
+            </div>
+        </div>
+        {if $num%2==0}<div class="bk10"></div>{/if}
+    {/loop}
+    </div>
+
+  </body>
+</html>
